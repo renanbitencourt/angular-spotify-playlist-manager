@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Find Track</h1>
+<mat-dialog-content>
+  <mat-form-field style="width: 100%">
+    <input matInput placeholder="Track name" (keyup)="searchTrack()" [(ngModel)]="searchQuery">
+  </mat-form-field>
+
+  <mat-list>
+    <mat-list-item *ngFor="let track of tracks.tracks.items">
+      <button mat-mini-fab color="accent" style="font-size: 25px" (click)="addTrack(track.uri)">+</button>
+      &nbsp; {{track.name}}
+    </mat-list-item>
+  </mat-list>
+
+</mat-dialog-content>

@@ -1,0 +1,48 @@
+<div style="z-index:5; position:fixed; display:flex; align-self:flex-end; bottom:6%; left: 94%;">
+  <button mat-fab color="accent" style="font-size: 25px" (click)="openDialog()">+</button>
+</div>
+
+<div class="container">
+  <div class="mt-5">
+    <h1>Playlists</h1>
+
+    <div class="mat-elevation-z12 mt-3">
+      <table mat-table [dataSource]="dataSource" class="w-100">
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef> Edit </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="openEditDialog(element)" [disabled]="playlistOwner(element.owner)">
+              <mat-icon>edit</mat-icon>
+            </button> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="detail">
+          <th mat-header-cell *matHeaderCellDef> Detail </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [routerLink]="['/tracks', userId, element.id]">
+              <mat-icon>search</mat-icon>
+            </button> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="unfollow">
+          <th mat-header-cell *matHeaderCellDef> Unfollow </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" (click)="unfollowPlaylist(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[12]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

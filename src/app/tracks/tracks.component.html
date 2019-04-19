@@ -1,0 +1,16 @@
+<div style="z-index:5; position:fixed; display:flex; align-self:flex-end; bottom:6%; left: 94%;">
+  <button mat-fab style="font-size: 25px" (click)="openDialog()">+</button>
+</div>
+
+<div class="container">
+  <div class="mt-5">
+    <h1>Track List</h1>
+
+    <mat-list>
+      <mat-list-item *ngFor="let track of tracks.items">
+        <button mat-mini-fab style="font-size: 25px" (click)="deleteTrack(track)">-</button>
+        &nbsp; {{track.track.name}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

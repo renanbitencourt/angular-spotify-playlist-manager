@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="mt-5">
+
+    <div class="row align-items-center">
+        <div class="col-auto mt-5">
+          <img src="{{user.images[0].url}}" style="border-radius: 100px;" class="mat-elevation-z12">
+        </div>
+
+        <div class="col">
+          <h1>User Information</h1>
+          <mat-card class="mat-elevation-z12">
+            <h3>{{user.display_name}}</h3>
+
+            <div class="mb-3 mt-2">
+              <span>Country: {{user.country}}</span> <br>
+              <span>E-Mail: </span><span *ngIf="user.email">{{user.email}}</span><span *ngIf="!user.email">Not informed</span> <br>
+              <span>Followers: {{user.followers.total}}</span>
+            </div>
+
+            <button mat-raised-button class="mat-elevation-z12" color="accent" [routerLink]="['/playlists', user.id]">Manage Playlists</button>
+          </mat-card>
+        </div>
+    </div>
+  </div>
+</div>
