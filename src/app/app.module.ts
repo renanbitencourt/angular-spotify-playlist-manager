@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatTableModule,
-  MatIconModule, MatListModule, MatDialogModule, MatToolbarModule, MatPaginatorModule } from '@angular/material';
+  MatIconModule, MatListModule, MatDialogModule, MatToolbarModule, MatPaginatorModule,
+  MatSelectModule, MatSnackBarModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,7 +41,9 @@ import { TrackDialogComponent } from './track-dialog/track-dialog.component';
     MatDialogModule,
     HttpClientModule,
     MatToolbarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

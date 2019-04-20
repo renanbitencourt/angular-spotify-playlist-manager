@@ -1,5 +1,5 @@
 <div style="z-index:5; position:fixed; display:flex; align-self:flex-end; bottom:6%; left: 94%;">
-  <button mat-fab style="font-size: 25px" (click)="openDialog()">+</button>
+  <button mat-fab style="font-size: 25px" color="primary" (click)="openDialog()">+</button>
 </div>
 
 <div class="container">
@@ -7,9 +7,40 @@
     <h1>Track List</h1>
 
     <mat-list>
-      <mat-list-item *ngFor="let track of tracks.items">
-        <button mat-mini-fab style="font-size: 25px" (click)="deleteTrack(track)">-</button>
-        &nbsp; {{track.track.name}}
+      <mat-list-item class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <label style="color: white;">Track name</label>
+        </div>
+        <div class="col-md-4">
+          <label style="color: white;">Artist</label>
+        </div>
+        <div class="col-md-3">
+          <label style="color: white;">Album</label>
+        </div>
+
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list>
+      <mat-list-item *ngFor="let track of tracks.items" class="row align-items-center">
+        <div class="col-md-1">
+          <button mat-mini-fab color="primary" (click)="deleteTrack(track)">-</button>
+        </div>
+
+        <div class="col-md-4">
+          {{track.track.name}}
+        </div>
+
+        <div class="col-md-4">
+          {{track.track.artists[0].name}}
+        </div>
+
+        <div class="col-md-3">
+          {{track.track.album.name}}
+        </div>
+
+        <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>
   </div>

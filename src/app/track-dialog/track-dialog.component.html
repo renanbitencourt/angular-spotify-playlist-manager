@@ -5,9 +5,24 @@
   </mat-form-field>
 
   <mat-list>
-    <mat-list-item *ngFor="let track of tracks.tracks.items">
-      <button mat-mini-fab color="accent" style="font-size: 25px" (click)="addTrack(track.uri)">+</button>
-      &nbsp; {{track.name}}
+    <mat-list-item *ngFor="let track of tracks.tracks.items" class="row align-items-center">
+      <div class="col-md-1">
+        <button mat-mini-fab color="primary" style="font-size: 25px" (click)="addTrack(track.uri)">+</button>
+      </div>
+
+      <div class="col-md-4">
+        {{track.name}}
+      </div>
+
+      <div class="col-md-4">
+        {{track.artists[0].name}}
+      </div>
+
+      <div class="col-md-3">
+        {{track.album.name}}
+      </div>
+
+      <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
 

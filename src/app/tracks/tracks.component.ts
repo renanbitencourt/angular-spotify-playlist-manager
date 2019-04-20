@@ -3,16 +3,18 @@ import { SpotifyService } from '../shared/spotify-service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { TrackDialogComponent } from '../track-dialog/track-dialog.component';
+import { SnackBarService } from '../shared/snack-bar-service';
 
 @Component({
   selector: 'app-tracks',
   templateUrl: './tracks.component.html',
   styleUrls: ['./tracks.component.sass'],
-  providers: [SpotifyService]
+  providers: [SpotifyService, SnackBarService]
 })
 export class TracksComponent implements OnInit {
 
-  constructor(private spotifyService: SpotifyService, private route: ActivatedRoute, private dialog: MatDialog) { }
+  constructor(private spotifyService: SpotifyService, private route: ActivatedRoute, private dialog: MatDialog,
+              private snackBarService: SnackBarService) { }
 
   tracks: any = { items: [] };
   playlistId;
@@ -43,6 +45,8 @@ export class TracksComponent implements OnInit {
   deleteTrack(track) {
     this.spotifyService.deleteTrack(this.userId, this.playlistId, track).subscribe(() => {
       this.getTracks();
+    }, error => {
+      this.snackBarService.error(error.error.error.message);
     });
   }
 

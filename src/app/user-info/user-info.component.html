@@ -13,11 +13,13 @@
 
             <div class="mb-3 mt-2">
               <span>Country: {{user.country}}</span> <br>
-              <span>E-Mail: </span><span *ngIf="user.email">{{user.email}}</span><span *ngIf="!user.email">Not informed</span> <br>
+              <span>E-Mail: </span>
+              <span *ngIf="user.email">{{user.email}}</span>
+              <span *ngIf="!user.email">Not informed</span> <br>
               <span>Followers: {{user.followers.total}}</span>
             </div>
 
-            <button mat-raised-button class="mat-elevation-z12" color="accent" [routerLink]="['/playlists', user.id]">Manage Playlists</button>
+            <button mat-raised-button class="mat-elevation-z12" color="primary" [routerLink]="['/playlists', user.id]">Manage Playlists</button>
           </mat-card>
         </div>
     </div>

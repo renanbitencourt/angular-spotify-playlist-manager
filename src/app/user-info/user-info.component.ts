@@ -12,14 +12,17 @@ export class UserInfoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private spotifyService: SpotifyService) { }
 
-  user: any = { followers: {} };
+  user: any = { followers: {}, images: [{}] };
 
   ngOnInit() {
-    localStorage.setItem('accessToken', new URLSearchParams(this.route.snapshot.fragment.split('#')[0]).get('access_token'));
-
-    this.spotifyService.getMe().subscribe(response => {
-      console.log(response);
-      this.user = response;
+    new Promise((resolve) => {
+      resolve(() => {
+        localStorage.setItem('accessToken', new URLSearchParams(this.route.snapshot.fragment.split('#')[0]).get('access_token'));
+      });
+    }).then(() => {
+      this.spotifyService.getMe().subscribe(response => {
+        this.user = response;
+      });
     });
   }
 
