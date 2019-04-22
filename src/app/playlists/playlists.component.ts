@@ -14,7 +14,7 @@ export class PlaylistsComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'edit', 'detail', 'unfollow'];
   dataSource = new MatTableDataSource();
-  userId;
+  userId: string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private spotifyService: SpotifyService, private route: ActivatedRoute, private dialog: MatDialog) { }
@@ -41,8 +41,6 @@ export class PlaylistsComponent implements OnInit {
   }
 
   openEditDialog(playlist) {
-    console.log(playlist);
-
     const dialogRef = this.dialog.open(PlaylistDialogComponent, {
       width: '35em',
       data: {
@@ -58,7 +56,6 @@ export class PlaylistsComponent implements OnInit {
 
   private getPlaylists(): void {
     this.spotifyService.getPlaylists(this.userId).subscribe(response => {
-      console.log(response);
       const key = 'items';
       this.dataSource.data = response[key];
     });

@@ -1,6 +1,4 @@
-<div style="z-index:5; position:fixed; display:flex; align-self:flex-end; bottom:6%; left: 94%;">
-  <button mat-fab style="font-size: 25px" color="primary" (click)="openDialog()">+</button>
-</div>
+<app-floating-button (click)="openDialog()"></app-floating-button>
 
 <div class="container">
   <div class="mt-5">
@@ -10,13 +8,13 @@
       <mat-list-item class="row">
         <div class="col-md-1"></div>
         <div class="col-md-4">
-          <label style="color: white;">Track name</label>
+          <label class="label-white">Track name</label>
         </div>
         <div class="col-md-4">
-          <label style="color: white;">Artist</label>
+          <label class="label-white">Artist</label>
         </div>
         <div class="col-md-3">
-          <label style="color: white;">Album</label>
+          <label class="label-white">Album</label>
         </div>
 
       </mat-list-item>

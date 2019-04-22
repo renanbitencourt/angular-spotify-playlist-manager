@@ -15,6 +15,7 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import { TracksComponent } from './tracks/tracks.component';
 import { PlaylistDialogComponent } from './playlist-dialog/playlist-dialog.component';
 import { TrackDialogComponent } from './track-dialog/track-dialog.component';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TrackDialogComponent } from './track-dialog/track-dialog.component';
     PlaylistsComponent,
     TracksComponent,
     PlaylistDialogComponent,
-    TrackDialogComponent
+    TrackDialogComponent,
+    FloatingButtonComponent
   ],
   imports: [
     BrowserModule,

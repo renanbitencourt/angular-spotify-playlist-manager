@@ -37,7 +37,7 @@ export class TracksComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.beforeClose().subscribe(() => {
       this.getTracks();
     });
   }
@@ -45,6 +45,7 @@ export class TracksComponent implements OnInit {
   deleteTrack(track) {
     this.spotifyService.deleteTrack(this.userId, this.playlistId, track).subscribe(() => {
       this.getTracks();
+      this.snackBarService.success('Track removed');
     }, error => {
       this.snackBarService.error(error.error.error.message);
     });
@@ -53,7 +54,6 @@ export class TracksComponent implements OnInit {
   private getTracks(): void {
     this.spotifyService.getTracks(this.userId, this.playlistId).subscribe(response => {
       this.tracks = response;
-      console.log(response);
     });
   }
 

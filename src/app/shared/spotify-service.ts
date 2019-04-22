@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable()
 export class SpotifyService {
@@ -10,8 +11,8 @@ export class SpotifyService {
 
   constructor(private http: HttpClient) { }
 
-  getMe(): Observable<any[]> {
-    return this.http.get<any[]>(environment.apiUrl + '/me', this.options);
+  getMe(): Observable<User> {
+    return this.http.get<User>(environment.apiUrl + '/me', this.options);
   }
 
   getPlaylists(userId): Observable<any[]> {
